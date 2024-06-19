@@ -1,0 +1,122 @@
+@import url('./variables.scss');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+html {
+  background: var(--bg-color);
+  color: var(--font-color);
+}
+
+html, body {
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+.game {
+  display: flex;
+  gap: 50px;
+}
+
+.board-container {
+  width: 800px;
+  height: 800px;
+
+  .board {
+    height: -webkit-fill-available;
+
+    .squares-container {
+      height: -webkit-fill-available;
+      padding: var(--border-thickness);
+      background: var(--border-color);
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.square {
+  width: calc(100% / 8);
+  height: calc(100% / 8);
+  &.white {
+    background: var(--light-squares);
+  }
+  &.black {
+    background: var(--dark-squares);
+  }
+  &.move {
+    img {
+      transform: translate(0, -30px);
+      filter: drop-shadow(#00000099 0rem 30px 10px)
+    }
+  }
+}
+
+.piece-icon {
+  height: 100%;
+  width: 100%;
+  transform: scale(.9);
+  user-select: none;
+  pointer-events: none;
+}
+
+.eval-bar {
+  background: var(--border-color);
+  padding: var(--border-thickness);
+  display: flex;
+  flex-direction: column;
+  .bar {
+    width: 30px;
+    &.white {
+      background: white;
+    }
+    &.black {
+      flex: 1;
+      background: black;
+    }
+  }
+}
+
+button, input[type=button] {
+  font-weight: bolder;
+  width: 100%;
+  border: none;
+  background: none;
+  font-size: 42px;
+  cursor: pointer;
+  padding: 20px;
+  border: var(--border-thickness) solid var(--border-color);
+
+  &.light {
+    color: var(--font-color);
+    background: var(--dark-squares);
+  }
+  &.dark {
+    color: var(--bg-color);
+    background: var(--light-squares);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
